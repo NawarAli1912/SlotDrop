@@ -1,0 +1,5 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <ItemGroup>
+    <ProjectReference Include="..\SlotDrop.Domain\SlotDrop.Domain.csproj" />
+  </ItemGroup>
+</Project>

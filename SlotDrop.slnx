@@ -1,0 +1,8 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/SlotDrop.Api/SlotDrop.Api.csproj" />
+    <Project Path="src/SlotDrop.Application/SlotDrop.Application.csproj" />
+    <Project Path="src/SlotDrop.Domain/SlotDrop.Domain.csproj" />
+    <Project Path="src/SlotDrop.Infrastructure/SlotDrop.Infrastructure.csproj" />
+  </Folder>
+</Solution>

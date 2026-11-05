@@ -1,0 +1,6 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+  <ItemGroup>
+    <ProjectReference Include="..\SlotDrop.Application\SlotDrop.Application.csproj" />
+    <ProjectReference Include="..\SlotDrop.Infrastructure\SlotDrop.Infrastructure.csproj" />
+  </ItemGroup>
+</Project>
