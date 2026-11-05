@@ -5,4 +5,7 @@
     <Project Path="src/SlotDrop.Domain/SlotDrop.Domain.csproj" />
     <Project Path="src/SlotDrop.Infrastructure/SlotDrop.Infrastructure.csproj" />
   </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/SlotDrop.ArchitectureTests/SlotDrop.ArchitectureTests.csproj" />
+  </Folder>
 </Solution>

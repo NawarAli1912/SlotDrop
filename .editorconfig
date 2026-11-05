@@ -392,3 +392,7 @@ dotnet_naming_style.s_camelcase.capitalization = camel_case
 [*.cs]
 dotnet_diagnostic.IDE0161.severity = warning
 dotnet_diagnostic.IDE0007.severity = warning
+
+# Test names are sentences with underscores (ADR-003), which CA1707 would reject.
+[tests/**.cs]
+dotnet_diagnostic.CA1707.severity = none
