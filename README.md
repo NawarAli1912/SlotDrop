@@ -1,5 +1,7 @@
 # SlotDrop
 
+[![CI](https://github.com/NawarAli1912/SlotDrop/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/NawarAli1912/SlotDrop/actions/workflows/ci.yml)
+
 A multi-tenant booking platform for barbers and clinics, built to learn double booking under concurrency and slot-drop traffic spikes.
 
 ## Prerequisites
@@ -17,4 +19,5 @@ dotnet run --project src/SlotDrop.Api
 ## Layout
 - `src/SlotDrop.Domain`, `src/SlotDrop.Application`, `src/SlotDrop.Infrastructure`, `src/SlotDrop.Api`: Clean Architecture layers; references point inward only
 - `tests/SlotDrop.ArchitectureTests`: rules that keep Domain and Application free of framework types
+- `.github/workflows/ci.yml`: the `build-test` check on every PR and every push to `main`
 - Build conventions: `global.json`, `Directory.Build.props`, `Directory.Packages.props`, `.editorconfig`

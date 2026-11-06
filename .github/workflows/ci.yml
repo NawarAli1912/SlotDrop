@@ -1,0 +1,35 @@
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+# A new push to a PR makes its running build pointless; runs on main always finish.
+concurrency:
+  group: ${{ github.workflow }}-${{ github.head_ref || github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
+permissions:
+  contents: read
+
+jobs:
+  # The ruleset on main requires this job by name; renaming it blocks every merge.
+  build-test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: actions/setup-dotnet@v6
+        with:
+          global-json-file: global.json
+          cache: true
+          cache-dependency-path: '**/packages.lock.json'
+
+      - run: dotnet restore SlotDrop.slnx --locked-mode
+
+      - run: dotnet format SlotDrop.slnx --verify-no-changes --no-restore
+
+      - run: dotnet build SlotDrop.slnx --no-restore -c Release
+
+      - run: dotnet test --solution SlotDrop.slnx --no-build -c Release
