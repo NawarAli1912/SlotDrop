@@ -396,3 +396,5 @@ dotnet_diagnostic.IDE0007.severity = warning
 # Test names are sentences with underscores, which CA1707 would reject.
 [tests/**.cs]
 dotnet_diagnostic.CA1707.severity = none
+# Tests run without a synchronization context, so ConfigureAwait adds noise and no safety.
+dotnet_diagnostic.CA2007.severity = none

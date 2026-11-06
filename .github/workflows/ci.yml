@@ -33,3 +33,6 @@ jobs:
       - run: dotnet build SlotDrop.slnx --no-restore -c Release
 
       - run: dotnet test --solution SlotDrop.slnx --no-build -c Release
+
+      # Not pushed anywhere: this only proves the image still builds. Pushing starts with CD in Sprint 2.
+      - run: docker build -f src/SlotDrop.Api/Dockerfile -t slotdrop-api:ci .

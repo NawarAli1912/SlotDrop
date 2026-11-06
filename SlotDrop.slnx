@@ -7,5 +7,6 @@
   </Folder>
   <Folder Name="/tests/">
     <Project Path="tests/SlotDrop.ArchitectureTests/SlotDrop.ArchitectureTests.csproj" />
+    <Project Path="tests/SlotDrop.IntegrationTests/SlotDrop.IntegrationTests.csproj" />
   </Folder>
 </Solution>
