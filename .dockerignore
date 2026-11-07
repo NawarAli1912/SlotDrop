@@ -9,3 +9,6 @@ tests/
 **/Dockerfile
 compose.yaml
 README.md
+docs/
+AGENTS.md
+CLAUDE.md

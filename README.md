@@ -35,3 +35,4 @@ Both are bound to `127.0.0.1`, so they're not reachable from other machines.
 - `src/SlotDrop.Api/Dockerfile`, `compose.yaml`: the API image and the local environment
 - `.github/workflows/ci.yml`: the `build-test` check on every PR and every push to `main`
 - Build conventions: `global.json`, `Directory.Build.props`, `Directory.Packages.props`, `.editorconfig`
+- `docs/`: roadmap, stories and ADRs (start at `docs/MAP.md`)
