@@ -36,8 +36,7 @@ public class TelemetryTests(ApiFixture api)
 
         Assert.True(trace.Response.IsSuccessStatusCode);
         var server = Assert.Single(trace.Spans, activity => activity.Kind == ActivityKind.Server);
-        // Controller spans are named after the attribute route template, which has no leading slash.
-        Assert.Equal("GET tenants/{id}", server.DisplayName);
+        Assert.Equal("GET /tenants/{id}", server.DisplayName);
         var query = Assert.Single(trace.Spans, activity => activity.Source.Name == "Npgsql");
         Assert.Equal(ActivityKind.Client, query.Kind);
         Assert.Equal(server.SpanId, query.ParentSpanId);
