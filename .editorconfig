@@ -398,3 +398,13 @@ dotnet_diagnostic.IDE0007.severity = warning
 dotnet_diagnostic.CA1707.severity = none
 # Tests run without a synchronization context, so ConfigureAwait adds noise and no safety.
 dotnet_diagnostic.CA2007.severity = none
+# xUnit injects fixtures into public test classes, so fixtures must be public too; test projects are Exe only for MTP.
+dotnet_diagnostic.CA1515.severity = none
+
+# EF Core writes migrations; they're reviewed as SQL in the PR, not held to hand-written style.
+[src/SlotDrop.Infrastructure/Persistence/Migrations/**.cs]
+generated_code = true
+
+# ASP.NET Core has no synchronization context either, so the same holds for the Api.
+[src/SlotDrop.Api/**.cs]
+dotnet_diagnostic.CA2007.severity = none

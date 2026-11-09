@@ -1,5 +1,13 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <ItemGroup>
+    <PackageReference Include="EFCore.NamingConventions" />
+    <!-- Npgsql only asks for Relational >= 10.0.4; pinning it keeps every EF Core package on the same version. -->
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Relational" />
+    <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" />
+    <!-- Only for `dotnet ef`; PrivateAssets keeps it out of the Api and its image. -->
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" PrivateAssets="all" />
+  </ItemGroup>
+  <ItemGroup>
     <ProjectReference Include="..\SlotDrop.Application\SlotDrop.Application.csproj" />
   </ItemGroup>
 </Project>

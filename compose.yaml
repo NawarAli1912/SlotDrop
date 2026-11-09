@@ -8,13 +8,35 @@ services:
       - "127.0.0.1:18888:18888"
       - "127.0.0.1:4317:18889"
 
+  postgres:
+    image: postgres:17
+    environment:
+      # Local-only credentials; the port is bound to 127.0.0.1. No volume: every `up` after `down` starts empty.
+      POSTGRES_DB: slotdrop
+      POSTGRES_USER: slotdrop
+      POSTGRES_PASSWORD: dev
+    ports:
+      - "127.0.0.1:5432:5432"
+    healthcheck:
+      # -h 127.0.0.1 checks over TCP. On first start the image runs a temporary, socket-only server to create the
+      # database, then restarts; a socket check would pass against that temporary server.
+      test: ["CMD", "pg_isready", "-h", "127.0.0.1", "-U", "slotdrop", "-d", "slotdrop"]
+      interval: 2s
+      timeout: 5s
+      retries: 15
+
   api:
     build:
       context: .
       dockerfile: src/SlotDrop.Api/Dockerfile
     environment:
       OTEL_EXPORTER_OTLP_ENDPOINT: http://aspire-dashboard:18889
+      ConnectionStrings__Postgres: Host=postgres;Database=slotdrop;Username=slotdrop;Password=dev
     ports:
       - "127.0.0.1:8080:8080"
     depends_on:
-      - aspire-dashboard
+      aspire-dashboard:
+        condition: service_started
+      # The API migrates at startup, so it waits until Postgres accepts connections.
+      postgres:
+        condition: service_healthy
