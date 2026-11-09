@@ -1,3 +1,5 @@
+using Npgsql;
+
 using OpenTelemetry;
 using OpenTelemetry.Metrics;
 using OpenTelemetry.Resources;
@@ -22,7 +24,8 @@ internal static class TelemetryExtensions
             .ConfigureResource(resource => resource.AddService(ServiceName))
             .WithTracing(tracing => tracing
                 .AddAspNetCoreInstrumentation()
-                .AddHttpClientInstrumentation())
+                .AddHttpClientInstrumentation()
+                .AddNpgsql())
             .WithMetrics(metrics => metrics
                 .AddAspNetCoreInstrumentation()
                 .AddHttpClientInstrumentation()
